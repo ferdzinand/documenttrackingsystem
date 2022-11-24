@@ -24,4 +24,27 @@ $("#display").click(function(){
 
 
     //SAVE DOCUMENT TO DATABASE VIA API
+
+    $(document).ready(function(){
+        $("#save").click(function(){
+        var dtnumber=$("#dtnumber").get(0).value;
+        var document_title=$("#document_title").get(0).value;
+        var document_origin=$("#document_origin").get(0).value;
+        var doc_type=$("#doc_type").get(0).value;
+        var date_recieved=$("#date_recieved").get(0).value;
+        var tag=$("#tag").get(0).value;
+        $.post("http://www.localhost/api/public/insertDox",
+                JSON.stringify({
+                    dtnumber: dtnumber,
+                    document_title: document_title,
+                    doc_type: doc_type,
+                    document_origin: document_origin,
+                    date_recieved: date_recieved,
+                    tag:tag
+            }),
+            function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+            });
+        });
+    });
     
